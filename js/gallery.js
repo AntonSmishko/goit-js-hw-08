@@ -90,7 +90,16 @@ galleryEl.insertAdjacentHTML('beforeend', imagesMarkup);
 
 function galleryHandler(evt) {
    evt.preventDefault();
-   console.log(evt.target.dataset.source);
+   let imgRealSize = evt.target.dataset.source;
+   if (evt.target === evt.currentTarget) {
+      console.error('You clicked out image');
+      return;
+   }
+   const instance = basicLightbox.create(`
+       <img src="${imgRealSize}" alt="${evt.target.alt}">
+   `);
+
+   instance.show();
 }
 
 galleryEl.addEventListener('click', galleryHandler);
