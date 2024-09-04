@@ -65,7 +65,6 @@ const images = [
 ];
 
 const galleryEl = document.querySelector('.gallery');
-console.log(galleryEl);
 
 const imagesMarkup = images
    .map(img => {
@@ -89,4 +88,9 @@ const imagesMarkup = images
 // galleryEl.innerHTML = imagesMarkup;
 galleryEl.insertAdjacentHTML('beforeend', imagesMarkup);
 
-// console.log(imagesMarkup);
+function galleryHandler(evt) {
+   evt.preventDefault();
+   console.log(evt.target.dataset.source);
+}
+
+galleryEl.addEventListener('click', galleryHandler);
